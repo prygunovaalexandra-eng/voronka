@@ -1,0 +1,312 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design System CSS Variables */
+:root {
+  --color-background-invert: #302F2D;
+  --color-text-invert: #E0DEDA;
+  --color-text-invert-minor: rgba(224, 222, 218, 0.5);
+  --color-background: #F5F4F2;
+  --color-text: #21201F;
+  --color-text-minor: rgba(33, 32, 31, 0.5);
+  --color-surface: #FFFFFF;
+  --color-surface-secondary: #F5F4F2;
+  --color-hover: rgba(48, 47, 45, 0.05);
+  --color-border: rgba(33, 32, 31, 0.1);
+  --color-border-focus: #302F2D;
+  --color-tag-bg: rgba(33, 32, 31, 0.08);
+  --color-tag-text: #21201F;
+}
+
+/* PPFraktion Font Faces - Safari Compatible */
+@font-face {
+  font-family: 'PPFraktion Sans';
+  src: url('/fonts/PPFraktionSans-Light.otf') format('opentype'),
+       url('/fonts/PPFraktionSans-Light.otf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'PPFraktion Sans';
+  src: url('/fonts/PPFraktionSans-Bold.otf') format('opentype'),
+       url('/fonts/PPFraktionSans-Bold.otf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'PPFraktion Mono';
+  src: url('/fonts/PPFraktionMono-Regular.otf') format('opentype'),
+       url('/fonts/PPFraktionMono-Regular.otf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+body {
+  margin: 0;
+  font-family: 'PPFraktion Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-background-invert);
+  color: var(--color-text-invert);
+}
+
+/* Custom blue caret for search input */
+.custom-caret {
+  caret-color: #0596FA;
+}
+
+/* Remove all focus states from buttons */
+button:focus,
+button:active,
+button:focus-visible,
+button:hover {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: inherit !important;
+  border: inherit !important;
+  transform: none !important;
+  text-decoration: none !important;
+}
+
+/* Specifically target tab buttons */
+button:active {
+  border-bottom: none !important;
+  border-bottom-color: transparent !important;
+}
+
+/* Completely disable hover effects on buttons */
+button {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+}
+
+button:hover:not(.tab-fixed) {
+  background-color: inherit !important;
+  color: inherit !important;
+  border-color: inherit !important;
+  font-weight: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  letter-spacing: inherit !important;
+}
+
+/* Fixed tab styles - lock all properties with smooth transitions and Safari optimizations */
+.tab-fixed {
+  font-family: "PPFraktion Mono", "PP Fraktion Mono", "SFMono-Regular", "Monaco", "Consolas", "Liberation Mono", "Courier New", monospace !important;
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+  letter-spacing: -0.2px !important;
+  height: 48px !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  border-bottom: 2px solid transparent !important;
+  max-width: 320px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  
+  /* Stabilize font rendering */
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: geometricPrecision !important;
+  
+  /* Fix text positioning */
+  text-align: center !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  
+  /* Add smooth color transition with Safari optimizations */
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  /* Safari specific optimizations */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: color;
+}
+
+.tab-fixed:hover,
+.tab-fixed:focus,
+.tab-fixed:active {
+  font-family: "PPFraktion Mono", "PP Fraktion Mono", "SFMono-Regular", "Monaco", "Consolas", "Liberation Mono", "Courier New", monospace !important;
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+  letter-spacing: -0.2px !important;
+  transform: none !important;
+  text-decoration: none !important;
+  
+  /* Maintain font rendering */
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: geometricPrecision !important;
+  
+  /* Lock positioning */
+  text-align: center !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Remove transitions for tab animations */
+.tab-fixed {
+  transition: none;
+}
+
+.tab-state-active,
+.tab-state-active-hover,
+.tab-state-active-click,
+.tab-state-inactive,
+.tab-state-inactive-hover,
+.tab-state-inactive-click {
+  transition: none;
+}
+
+/* All hover effects handled via JS - no CSS hover needed */
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
+/* Tab states - make transparent for sliding background with smooth transitions */
+
+/* Active tab states - transparent background */
+.tab-state-active {
+  background-color: transparent !important;
+  color: #21201F !important; /* text */
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.tab-state-active-hover {
+  background-color: transparent !important;
+  color: #21201F !important; /* text */
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.tab-state-active-click {
+  background-color: transparent !important;
+  color: #21201F !important; /* text */
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Inactive tab states - transparent background */
+.tab-state-inactive {
+  background-color: transparent !important;
+  color: rgba(224, 222, 218, 0.5) !important; /* text-invert-minor */
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.tab-state-inactive-hover {
+  background-color: transparent !important;
+  color: #E0DEDA !important; /* text-invert */
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.tab-state-inactive-click {
+  background-color: transparent !important;
+  color: #E0DEDA !important; /* text-invert */
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Sliding background for tabs - Safari compatible with transform */
+.sliding-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 48px;
+  background-color: #F5F4F2;
+  border-radius: 20px 20px 0 0;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+  /* Safari specific optimizations for transform */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform, width;
+  /* Force hardware acceleration */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Smooth border-radius transitions for container - Safari optimized */
+.container-rounded-animated {
+  transition: border-radius 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Safari specific optimizations */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: border-radius;
+}
+
+/* Expanded content text styling */
+.expanded-content-text {
+  font-family: 'PPFraktion Mono', monospace;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+}
+
+/* Expanded content text with taller line height for value proposition */
+.expanded-content-text-tall {
+  font-family: 'PPFraktion Mono', monospace;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: -0.2px;
+}
+
+/* Custom 24px bottom margin for Value proposition header */
+.mb-24px {
+  margin-bottom: 24px;
+}
+
+/* Exact text-minor color for expanded content headers */
+.text-minor-exact {
+  color: #21201F80;
+}
+
+/* Exact border color for expanded content divider */
+.border-minor-exact {
+  border-color: #21201F4D;
+}
+
+/* Exact background color for vertical dividers */
+.bg-minor-exact {
+  background-color: #21201F4D;
+}
+
+/* Smooth border-radius transitions for table rows */
+.table-row-animated {
+  transition: border-radius 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
